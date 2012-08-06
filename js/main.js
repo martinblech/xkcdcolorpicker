@@ -9,17 +9,48 @@ require.config({
 	}
 
 });
-require(['jquery', 'underscore', 'backbone', 'text!../rgb.txt'],
-    function($, _, Backbone, rgb) {
+// require([
+//     'jquery',
+//     'underscore',
+//     'backbone',
+//     'text!../rgb.txt',
+//     'bootstrap/typeahead'],
+//     function($, _, Backbone, rgb) {
+//   'use strict';
+//   var colors = [],
+//     typeaheadColorNames = [];
+//   _.each(rgb.split('\n'), function(line) {
+//     if (line) {
+//       var splitLine = line.split('\t'),
+//         color = {name: splitLine[0], hex: splitLine[1]};
+//       colors.push(color);
+//       typeaheadColorNames.push(color.name);
+//     }
+//   });
+//   $(function() {
+//     var colorRowTemplate = _.template($('#tmpl-color-row').html()),
+//       tableBody = $('#similar-colors tbody'),
+//       newTableBody = $('<tbody></tbody>');
+//     _.each(colors, function(color) {
+//       newTableBody.append(colorRowTemplate(color));
+//     });
+//     tableBody.replaceWith(newTableBody);
+//     $('input[name="colorname"]').typeahead({
+//       source:typeaheadColorNames
+//     });
+//   });
+// });
+require([
+    'views/app',
+    'routers/router',
+    'backbone',
+    'common'
+], function(AppView, Workspace, Backbone, common) {
   'use strict';
-  _.each(rgb.split('\n'), function(line) {
-    if (line) {
-      var splitLine = line.split('\t'),
-        color = {name: splitLine[0], hex: splitLine[1]};
-      console.log(color);
-    }
-  });
-  console.log($);
-  console.log(_);
-  console.log(Backbone);
+
+  new Workspace();
+  Backbone.history.start();
+
+  new AppView();
+
 });

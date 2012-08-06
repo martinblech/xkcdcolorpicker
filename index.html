@@ -19,6 +19,23 @@
   <link rel="stylesheet" href="css/main.css">
 
   <script src="js/vendor/modernizr-2.6.1.min.js"></script>
+
+  <script id="tmpl-color-row" type="text/html">
+    <tr>
+      <td class="preview-column">
+        <a href="#!/<%= hex.split('#')[1] %>">
+          <div class="colorbackground">
+            <div class="colorpreview"
+              style="background-color: <%= hex %>;"></div>
+          </div>
+        </a>
+      </td>
+      <td class="colorname">
+        <a href="#!/<%= hex.split('#')[1] %>"><%= name %> (<%= hex %>)</a>
+      </td>
+    </tr>
+  </script>
+
 </head>
 <body>
     <!--[if lt IE 7]><p class="chromeframe">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
@@ -49,28 +66,31 @@
         <span id="hslcode" class="label">hsl(327, 100%, 50%)</span>
       </div>
       <div id="colorselect" class="row-fluid">
-        <form id="params" class="well span4">
-          <fieldset class="row-fluid">
-            <input type="text" name="colorname" placeholder="color name"
-              value="hot pink" />
+        <div id="params" class="well span4">
+          <fieldset class="control-group row-fluid">
+            <label>color name</label>
+            <input type="text" id="colorname" placeholder="color name"
+              value="hot pink"/>
           </fieldset>
-          <fieldset class="row-fluid">
-            <label>rgb:</label>
-            <input type="range" name="r" min="0" max="255" value="255" />
-            <input type="range" name="g" min="0" max="255" value="2" />
-            <input type="range" name="b" min="0" max="255" value="141" />
+          <fieldset class="control-group row-fluid rgb">
+            <label>rgb</label>
+            <input type="range" id="r" min="0" max="255" value="255" />
+            <input type="range" id="g" min="0" max="255" value="2" />
+            <input type="range" id="b" min="0" max="255" value="141" />
           </fieldset>
-          <fieldset class="row-fluid">
-            <label>hsl:</label>
-            <input type="range" name="h" min="0" max="359" value="327" />
-            <input type="range" name="s" min="0" max="100" value="100" />
-            <input type="range" name="l" min="0" max="100" value="50" />
+          <fieldset class="control-group row-fluid hsl">
+            <label>hsl</label>
+            <input type="range" id="h" min="0" max="359" value="327" />
+            <input type="range" id="s" min="0" max="100" value="100" />
+            <input type="range" id="l" min="0" max="100" value="50" />
           </fieldset>
-        </form>
+        </div>
         <div class="span8">
-          <h3>similar:</h3>
           <table id="similar-colors"
               class="table table-bordered">
+            <thead>
+              <tr><th colspan="2">similar colors</th></tr>
+            </thead>
             <tbody>
               <tr>
                 <td class="preview-column">
@@ -82,7 +102,33 @@
                   </a>
                 </td>
                 <td class="colorname">
-                  <a href="#!/hot pink">hot pink</a>
+                  <a href="#!/hot pink">hot pink (#ff028d)</a>
+                </td>
+              </tr>
+              <tr>
+                <td class="preview-column">
+                  <a href="#!/bright pink">
+                    <div class="colorbackground">
+                      <div class="colorpreview"
+                        style="background-color: #fe01b1;"></div>
+                    </div>
+                  </a>
+                </td>
+                <td class="colorname">
+                  <a href="#!/bright pink">bright pink (#fe01b1)</a>
+                </td>
+              </tr>
+              <tr>
+                <td class="preview-column">
+                  <a href="#!/fuchsia">
+                    <div class="colorbackground">
+                      <div class="colorpreview"
+                        style="background-color: #ed0dd9;"></div>
+                    </div>
+                  </a>
+                </td>
+                <td class="colorname">
+                  <a href="#!/fuchsia">fuchsia (#ed0dd9)</a>
                 </td>
               </tr>
             </tbody>

@@ -92,8 +92,17 @@
 
 /* Color params form
 -------------------------------------------------- */
+#params {
+  text-align: center;
+}
+
 #params input {
   width: 100%;
+}
+
+#params label {
+  font-size: 14px;
+  font-weight: bold;
 }
 
 /* Color code display
@@ -111,8 +120,21 @@
 /* Similar colors list
 -------------------------------------------------- */
 td.preview-column {
-  margin: 0;
   padding: 0;
+}
+
+#similar-colors td {
+  border-top: none;
+}
+
+#similar-colors th {
+  border-bottom: solid 1px #ddd;
+}
+
+#similar-colors td, #similar-colors th {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
 }
 
 #similar-colors .colorbackground {
@@ -138,10 +160,7 @@ td.preview-column {
 
 td.colorname {
   width: 50%;
-  text-align: center;
   vertical-align: middle;
-  font-size: 14px;
-  font-weight: bold;
 }
 
 /* Footer
