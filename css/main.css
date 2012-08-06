@@ -78,8 +78,8 @@
 #maincurrentcolor {
   position: relative;
 
-  height: 10em;
-  top: 2em;
+  height: 130px;
+  top: 26px;
 
   width: 94%;
   margin-left: -47%;
@@ -88,6 +88,29 @@
   -webkit-border-radius: 7px 7px 7px 7px;
      -moz-border-radius: 7px 7px 7px 7px;
           border-radius: 7px 7px 7px 7px;
+
+  text-align: center;
+  line-height: 130px;
+  font-weight: bold;
+  font-size: 36px;
+}
+
+.colorpreview {
+  -webkit-transition: 500ms linear 0s;  
+     -moz-transition: 500ms linear 0s;  
+       -o-transition: 500ms linear 0s;  
+          transition: 500ms linear 0s;  
+  color: transparent;
+  text-shadow: none;
+}
+
+.colorpreview:hover, .colorpreview.hovered {
+  -webkit-transition: 100ms linear 0s;  
+     -moz-transition: 100ms linear 0s;  
+       -o-transition: 100ms linear 0s;  
+          transition: 100ms linear 0s;  
+  color: black;
+  text-shadow: white 1px 1px;
 }
 
 /* Color params form
@@ -119,26 +142,35 @@
 
 /* Similar colors list
 -------------------------------------------------- */
+.tablecontainer {
+  max-height: 320px;
+  overflow: scroll;
+}
+
+.similarity-table {
+  margin-bottom: 0;
+}
+
 td.preview-column {
   padding: 0;
 }
 
-#similar-colors td {
+.similarity-table td {
   border-top: none;
 }
 
-#similar-colors th {
+.similarity-table th {
   border-bottom: solid 1px #ddd;
 }
 
-#similar-colors td, #similar-colors th {
+.similarity-table td, .similarity-table th {
   font-size: 14px;
   font-weight: bold;
   text-align: center;
 }
 
-#similar-colors .colorbackground {
-  height: 3em;
+.similarity-table .colorbackground {
+  height: 35px;
   margin: 0;
   padding: 0;
 }
@@ -146,8 +178,8 @@ td.preview-column {
 .colorpreview {
   position: relative;
 
-  height: 2em;
-  top: .5em;
+  height: 26px;
+  top: 4px;
 
   width: 94%;
   margin-left: -47%;
@@ -156,6 +188,17 @@ td.preview-column {
   -webkit-border-radius: 3px 3px 3px 3px;
      -moz-border-radius: 3px 3px 3px 3px;
           border-radius: 3px 3px 3px 3px;
+
+  line-height: 26px;
+
+}
+
+.preview-column a {
+  text-decoration: none;
+}
+
+.preview-column a:hover {
+  text-decoration: none;
 }
 
 td.colorname {

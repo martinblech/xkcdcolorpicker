@@ -10,8 +10,12 @@ define([
   _.each(rgb.split('\n'), function(line) {
     if (line) {
       var splitLine = line.split('\t'),
-        color = {name: splitLine[0], hex: splitLine[1]};
-      ColorsCollection.add(color);
+          color = {name: splitLine[0], hex: splitLine[1]},
+          colorModel = new ColorModel({name: color.name});
+      colorModel.set({
+        hex: color.hex
+      });
+      ColorsCollection.add(colorModel);
       hexToName[color.hex] = color.name;
     }
   });

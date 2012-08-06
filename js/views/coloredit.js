@@ -29,7 +29,10 @@ define([
       this.sInput = this.$('#s');
       this.lInput = this.$('#l');
       this.updating = false;
-      this.model.on('change', this.updateColor, this);
+      this.rgbUpdating = false;
+      this.hslUpdating = false;
+      this.model.on('change', this.render, this);
+      this.render();
     },
 
     events: {
@@ -38,18 +41,23 @@ define([
       'change .rgb input': 'rgbChanged'
     },
 
-    updateColor: function() {
+    render: function() {
       if (!this.updating) {
         this.updating = true;
         this.nameInput.val(this.model.get('name'));
-        this.rInput.val(this.model.get('r'));
-        this.gInput.val(this.model.get('g'));
-        this.bInput.val(this.model.get('b'));
-        this.hInput.val(this.model.get('h'));
-        this.sInput.val(this.model.get('s'));
-        this.lInput.val(this.model.get('l'));
+        if (!this.rgbUpdating) {
+          this.rInput.val(this.model.get('r'));
+          this.gInput.val(this.model.get('g'));
+          this.bInput.val(this.model.get('b'));
+        }
+        if (!this.hslUpdating) {
+          this.hInput.val(this.model.get('h'));
+          this.sInput.val(this.model.get('s'));
+          this.lInput.val(this.model.get('l'));
+        }
         this.updating = false;
       }
+      return this;
     },
 
     colorNameChanged: function() {
@@ -68,20 +76,27 @@ define([
     },
 
     hslChanged: function() {
-      this.model.set({
-        h: parseInt(this.hInput.val(), 10),
-        s: parseInt(this.sInput.val(), 10),
-        l: parseInt(this.lInput.val(), 10)
-      });
+      if (!this.hslUpdating) {
+        this.hslUpdating = true;
+        this.model.set({
+          h: parseInt(this.hInput.val(), 10),
+          s: parseInt(this.sInput.val(), 10),
+          l: parseInt(this.lInput.val(), 10)
+        });
+        this.hslUpdating = false;
+      }
     },
 
     rgbChanged: function() {
-      var rgb = {
-        r: parseInt(this.rInput.val(), 10),
-        g: parseInt(this.gInput.val(), 10),
-        b: parseInt(this.bInput.val(), 10)
-      };
-      this.model.set(rgb);
+      if (!this.rgbUpdating) {
+        this.rgbUpdating = true;
+        this.model.set({
+          r: parseInt(this.rInput.val(), 10),
+          g: parseInt(this.gInput.val(), 10),
+          b: parseInt(this.bInput.val(), 10)
+        });
+        this.rgbUpdating = false;
+      }
     }
 
   });

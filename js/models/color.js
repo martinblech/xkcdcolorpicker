@@ -28,9 +28,9 @@ define([
   };
 
   function rgbToHex(r, g, b) {
-    r = Math.floor(r);
-    g = Math.floor(g);
-    b = Math.floor(b);
+    r = Math.max(0, Math.min(255, Math.floor(r)));
+    g = Math.max(0, Math.min(255, Math.floor(g)));
+    b = Math.max(0, Math.min(255, Math.floor(b)));
     return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
   };
 
@@ -95,48 +95,40 @@ define([
     },
 
     initialize: function() {
-      var rgbChanged, hslChanged;
       this.on('change:hex', function() {
         var hex = this.get('hex'),
             rgb = hexToRGB(hex),
             hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
-        this.attributes.r = rgb.r;
-        this.attributes.g = rgb.g;
-        this.attributes.b = rgb.b;
-        this.attributes.h = hsl.h;
-        this.attributes.s = hsl.s;
-        this.attributes.l = hsl.l;
+        var attrs = _.extend(rgb, hsl);
+        if (ColorModel.hexToName) {
+          attrs.name = ColorModel.hexToName[hex] || '';
+        }
+        this.set(attrs, {silent: true});
       });
-      rgbChanged = function() {
+      this.on('change:r change:g change:b', function() {
         var r = this.get('r'),
             g = this.get('g'),
             b = this.get('b'),
             hex = rgbToHex(r, g, b),
             hsl = rgbToHsl(r, g, b);
-        this.attributes.hex = hex;
-        this.attributes.h = hsl.h;
-        this.attributes.s = hsl.s;
-        this.attributes.l = hsl.l;
-        this.attributes.name = ColorModel.hexToName[hex] || '';
-      }
-      this.on('change:r', rgbChanged);
-      this.on('change:g', rgbChanged);
-      this.on('change:b', rgbChanged);
-      hslChanged = function() {
+        var attrs = _.extend(hsl, {
+          hex: hex,
+          name: ColorModel.hexToName[hex] || ''
+        });
+        this.set(attrs, {silent: true});
+      });
+      this.on('change:h change:s change:l', function() {
         var h = this.get('h'),
             s = this.get('s'),
             l = this.get('l'),
             rgb = hslToRgb(h, s, l),
             hex = rgbToHex(rgb.r, rgb.g, rgb.b);
-        this.attributes.hex = hex;
-        this.attributes.r = rgb.r;
-        this.attributes.g = rgb.g;
-        this.attributes.b = rgb.b;
-        this.attributes.name = ColorModel.hexToName[hex] || '';
-      }
-      this.on('change:h', hslChanged);
-      this.on('change:s', hslChanged);
-      this.on('change:l', hslChanged);
+        var attrs = _.extend(rgb, {
+          hex: hex,
+          name: ColorModel.hexToName[hex] || ''
+        });
+        this.set(attrs, {silent: true});
+      });
     },
 
     idAttribute: 'hex',
@@ -151,6 +143,13 @@ define([
       return 'hsl(' + Math.floor(this.get('h')) + ', ' +
           Math.floor(this.get('s')) + '%, ' +
           Math.floor(this.get('l')) + '%)';
+    },
+
+    distanceTo: function(color) {
+      var dr = this.get('r') - color.get('r'),
+          dg = this.get('g') - color.get('g'),
+          db = this.get('b') - color.get('b');
+      return dr*dr + dg*dg + db*db;
     }
 
   });
