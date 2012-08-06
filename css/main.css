@@ -1,0 +1,157 @@
+/* Jumbotrons
+-------------------------------------------------- */
+.jumbotron {
+  position: relative;
+}
+.jumbotron h1 {
+  margin-bottom: 9px;
+  font-size: 64px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+.jumbotron p {
+  margin-bottom: 10px;
+  font-weight: 300;
+}
+.jumbotron .btn-large {
+  font-size: 20px;
+  font-weight: normal;
+  padding: 14px 24px;
+  margin-right: 10px;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+.jumbotron .btn-large small {
+  font-size: 14px;
+}
+
+/* Masthead (docs home) */
+.masthead {
+  padding-top: 24px;
+  margin-bottom: 24px;
+}
+.masthead h1,
+.masthead p {
+  text-align: center;
+}
+.masthead h1 {
+  margin-bottom: 18px;
+}
+.masthead p {
+  margin-left: 5%;
+  margin-right: 5%;
+  font-size: 18px;
+}
+
+/* Color display
+-------------------------------------------------- */
+.currentcolor {
+}
+
+.colorbackground {
+  background-color: black;
+  background-image: linear-gradient(left , black 50%, white 50%);
+  background-image: -o-linear-gradient(left , black 50%, white 50%);
+  background-image: -moz-linear-gradient(left , black 50%, white 50%);
+  background-image: -webkit-linear-gradient(left , black 50%, white 50%);
+  background-image: -ms-linear-gradient(left , black 50%, white 50%);
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    right bottom,
+    color-stop(0.5, black),
+    color-stop(0.5, white)
+  );
+}
+
+#colordisplay {
+  margin-bottom: 2em;
+  height: 14em;
+  border: 1px solid #eee;
+  -webkit-border-radius: 7px 7px 7px 7px;
+     -moz-border-radius: 7px 7px 7px 7px;
+          border-radius: 7px 7px 7px 7px;
+}
+
+#maincurrentcolor {
+  position: relative;
+
+  height: 10em;
+  top: 2em;
+
+  width: 94%;
+  margin-left: -47%;
+  left: 50%;
+
+  -webkit-border-radius: 7px 7px 7px 7px;
+     -moz-border-radius: 7px 7px 7px 7px;
+          border-radius: 7px 7px 7px 7px;
+}
+
+/* Color params form
+-------------------------------------------------- */
+#params input {
+  width: 100%;
+}
+
+/* Color code display
+-------------------------------------------------- */
+#colorcodes {
+  text-align: center;
+  height: 3em;
+}
+
+#colorcodes span {
+  font-size: 13px;
+  margin: .5em;
+}
+
+/* Similar colors list
+-------------------------------------------------- */
+td.preview-column {
+  margin: 0;
+  padding: 0;
+}
+
+#similar-colors .colorbackground {
+  height: 3em;
+  margin: 0;
+  padding: 0;
+}
+
+.colorpreview {
+  position: relative;
+
+  height: 2em;
+  top: .5em;
+
+  width: 94%;
+  margin-left: -47%;
+  left: 50%;
+
+  -webkit-border-radius: 3px 3px 3px 3px;
+     -moz-border-radius: 3px 3px 3px 3px;
+          border-radius: 3px 3px 3px 3px;
+}
+
+td.colorname {
+  width: 50%;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Footer
+-------------------------------------------------- */
+.footer {
+  margin-top: 45px;
+  padding: 35px 0 36px;
+  border-top: 1px solid #e5e5e5;
+}
+.footer p {
+  margin-bottom: 0;
+  color: #555;
+}

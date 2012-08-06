@@ -1,0 +1,24 @@
+{
+  "name": "xkcdcolorpicker",
+  "description": "HTML5 named color picker based on http://xkcd.com/color/rgb/",
+  "version": "0.1.0",
+  "homepage": "https://github.com/mblech/xkcdcolorpicker",
+  "author": {
+    "name": "Martin Blech",
+    "email": "martinblech@gmail.com",
+    "url": "http://martinble.ch/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mblech/xkcdcolorpicker.git"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/mblech/xkcdcolorpicker/blob/master/LICENSE-MIT"
+    }
+  ],
+  "dependencies": {
+    "node-build-script": "http://nodeload.github.com/h5bp/node-build-script/tarball/dev"
+  }
+}

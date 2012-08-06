@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>xkcd color picker</title>
+  <meta name="description"
+    content="a HTML color picker based on xkcd's color survey">
+
+  <meta name="viewport" content="width=device-width">
+
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/bootstrap-responsive.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <script src="js/vendor/modernizr-2.6.1.min.js"></script>
+</head>
+<body>
+    <!--[if lt IE 7]><p class="chromeframe">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+
+  <div class="container">
+
+    <header class="masthead jumbotron">
+      <div class="inner">
+        <h1>xkcd color picker</h1>
+        <p>a HTML5 color picker based on
+          <a href="http://xkcd.com/">xkcd</a>'s
+          <a href="http://blog.xkcd.com/2010/05/03/color-survey-results/">
+            color survey
+          </a>
+        </p>
+      </div>
+    </header>
+
+    <div id="main">
+      <div id="colordisplay" class="colorbackground">
+        <div id="maincurrentcolor" class="currentcolor"
+          style="background-color: #ff028d;">
+        </div>
+      </div>
+      <div id="colorcodes">
+        <span id="hexcode" class="label">#ff028d</span>
+        <span id="rgbcode" class="label">rgb(255, 2, 141)</span>
+        <span id="hslcode" class="label">hsl(327, 100%, 50%)</span>
+      </div>
+      <div id="colorselect" class="row-fluid">
+        <form id="params" class="well span4">
+          <fieldset class="row-fluid">
+            <input type="text" name="colorname" placeholder="color name"
+              value="hot pink" />
+          </fieldset>
+          <fieldset class="row-fluid">
+            <label>rgb:</label>
+            <input type="range" name="r" min="0" max="255" value="255" />
+            <input type="range" name="g" min="0" max="255" value="2" />
+            <input type="range" name="b" min="0" max="255" value="141" />
+          </fieldset>
+          <fieldset class="row-fluid">
+            <label>hsl:</label>
+            <input type="range" name="h" min="0" max="359" value="327" />
+            <input type="range" name="s" min="0" max="100" value="100" />
+            <input type="range" name="l" min="0" max="100" value="50" />
+          </fieldset>
+        </form>
+        <div class="span8">
+          <h3>similar:</h3>
+          <table id="similar-colors"
+              class="table table-bordered">
+            <tbody>
+              <tr>
+                <td class="preview-column">
+                  <a href="#!/hot pink">
+                    <div class="colorbackground">
+                      <div class="colorpreview"
+                        style="background-color: #ff028d;"></div>
+                    </div>
+                  </a>
+                </td>
+                <td class="colorname">
+                  <a href="#!/hot pink">hot pink</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>Made by <a href="http://martinble.ch/">Martin Blech</a> ジ</p>
+    </footer>
+
+  </div>
+  <!-- scripts concatenated and minified via build script -->
+  <script data-main="js/main.js" src="js/vendor/require-2.0.4.js"></script>
+  <!-- end scripts -->
+  <script>
+
+    Modernizr.load({
+      test: Modernizr.inputtypes.range,
+      nope: [      
+      'js/mylibs/fd-slider.min.js'
+      ,'css!js/mylibs/fd-slider.min.css'      
+      ],
+      callback: function(url, testResult) {
+        // the fd-slider actually runs automatically
+      }
+    });
+
+  </script>
+
+  <script>
+    var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+      s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+</body>
+</html>
