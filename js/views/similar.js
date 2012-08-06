@@ -12,7 +12,7 @@ define([
     
     initialize: function() {
       var tableContainers = this.$('.tablecontainer');
-      this.scrollContainers = _.throttle(function() {
+      this.scrollContainers = _.debounce(function() {
         tableContainers.each(function() {
           var tc = $(this);
           if (tc.scrollTop() > 0) {
@@ -30,7 +30,7 @@ define([
       'click a': 'colorPicked'
     },
 
-    render: _.throttle(function() {
+    render: function() {
       var count = 75,
           similar = ColorCollection.getSortedIdsByDistanceTo(this.model),
           best = similar.slice(0, count),
@@ -39,7 +39,7 @@ define([
       this.scrollContainers();
       this.updateTBody(this.similarTBody, best);
       this.updateTBody(this.dissimilarTBody, worst);
-    }, 200),
+    },
 
     updateTBody: function(element, ids) {
       var children = element.children(),
@@ -59,13 +59,14 @@ define([
             previewDiv = $this.find('.colorpreview');
         previewDiv.css('background-color', color.get('hex'));
         previewDiv.text(colorName);
-        previewDiv.addClass('hovered').delay(1000).queue(
-          function(next) {
-            $(this).removeClass('hovered');
-            next();
-          });
         $this.find('a').attr('href', '#!/' + colorName);
       });
+      console.log(element);
+      element.addClass('hovered').delay(1000).queue(
+        function(next) {
+          $(this).removeClass('hovered');
+          next();
+        });
     },
 
     colorPicked: function(e) {

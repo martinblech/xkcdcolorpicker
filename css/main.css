@@ -104,7 +104,7 @@
   text-shadow: none;
 }
 
-.colorpreview:hover, .colorpreview.hovered {
+.colorpreview:hover, .touch .colorpreview, .hovered .colorpreview {
   -webkit-transition: 100ms linear 0s;  
      -moz-transition: 100ms linear 0s;  
        -o-transition: 100ms linear 0s;  
@@ -197,7 +197,7 @@ td.preview-column {
   text-decoration: none;
 }
 
-.preview-column a:hover {
+.preview-column a:hover, .touch .preview-column a {
   text-decoration: none;
 }
 
