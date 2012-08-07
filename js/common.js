@@ -23,7 +23,7 @@ define([
   ColorModel.hexToName = hexToName;
 
   return {
-    currentColor: ColorsCollection.getByName('hot pink').clone()
+    currentColor: ColorsCollection.getByName('shit').clone()
   }
 
 });

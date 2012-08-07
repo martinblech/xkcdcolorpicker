@@ -32,9 +32,10 @@ define([
 
     render: function() {
       var count = 75,
-          similar = ColorCollection.getSortedIdsByDistanceTo(this.model),
-          best = similar.slice(0, count),
-          worst = similar.slice(similar.length - count, similar.length);
+          best = ColorCollection.getSortedIdsByDistanceTo(this.model,
+              'cielab').slice(0, count),
+          worst = ColorCollection.getSortedIdsByDistanceTo(this.model,
+              'rgb').slice(-count);
       worst.reverse();
       this.scrollContainers();
       this.updateTBody(this.similarTBody, best);
@@ -61,7 +62,6 @@ define([
         previewDiv.text(colorName);
         $this.find('a').attr('href', '#!/' + colorName);
       });
-      console.log(element);
       element.addClass('hovered').delay(1000).queue(
         function(next) {
           $(this).removeClass('hovered');
