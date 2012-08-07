@@ -214,6 +214,15 @@ define([
       return dr*dr + dg*dg + db*db;
     },
 
+    lowcostDistanceTo: function(color) {
+      // from http://www.compuphase.com/cmetric.htm
+      var rmean = (this.get('r') + color.get('r')) / 2,
+          r = this.get('r') - color.get('r'),
+          g = this.get('g') - color.get('g'),
+          b = this.get('b') - color.get('b');
+      return ((512+rmean)*r*r)/256 + 4*g*g + ((767-rmean)*b*b)/256;
+    },
+
     cielabDistanceTo: function(color) {
       var dr = this.get('CIE_L') - color.get('CIE_L'),
           dg = this.get('CIE_a') - color.get('CIE_a'),

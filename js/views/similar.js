@@ -28,10 +28,10 @@ define([
 
     render: function() {
       var count = 75,
-          best = ColorCollection.getSortedIdsByDistanceTo(this.model,
-              'cielab').slice(0, count),
-          worst = ColorCollection.getSortedIdsByDistanceTo(this.model,
-              'rgb').slice(-count);
+          sorted = ColorCollection.getSortedIdsByDistanceTo(this.model,
+              'lowcost'),
+          best = sorted.slice(0, count),
+          worst = sorted.slice(-count);
       worst.reverse();
       this.scrollContainers();
       this.updateTBody(this.similarTBody, best);
