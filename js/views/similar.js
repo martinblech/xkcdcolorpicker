@@ -26,10 +26,6 @@ define([
       this.render();
     },
 
-    events: {
-      'click a': 'colorPicked'
-    },
-
     render: function() {
       var count = 75,
           best = ColorCollection.getSortedIdsByDistanceTo(this.model,
@@ -67,15 +63,6 @@ define([
           $(this).removeClass('hovered');
           next();
         });
-    },
-
-    colorPicked: function(e) {
-      var colorName = e.currentTarget.hash.split('/')[1],
-          color = ColorCollection.getByName(colorName);
-      e.preventDefault();
-      if (color) {
-        this.model.set(color.attributes);
-      }
     }
 
   });
