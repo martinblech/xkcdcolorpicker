@@ -11,6 +11,6 @@ script](https://github.com/h5bp/node-build-script) and some color similarity
 metrics I found [on a stackoverflow
 question](http://stackoverflow.com/questions/1313/followup-finding-an-accurate-distance-between-colors))
 
-# see it live
+## see it live
 
 here: http://xkcdcp.martinble.ch/
