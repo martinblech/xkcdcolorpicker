@@ -60,7 +60,7 @@ define([
             previewDiv = $this.find('.colorpreview');
         previewDiv.css('background-color', color.get('hex'));
         previewDiv.text(colorName);
-        $this.find('a').attr('href', '#!/' + colorName);
+        $this.find('a').attr('href', '#' + colorName);
       });
       element.addClass('hovered').delay(1000).queue(
         function(next) {
