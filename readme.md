@@ -13,4 +13,4 @@ question](http://stackoverflow.com/questions/1313/followup-finding-an-accurate-d
 
 ## see it live
 
-here: http://xkcdcp.martinble.ch/
+here: http://xkcdcp.martinblech.com/
